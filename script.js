@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const quote = document.getElementById("quote");
-  const author = document.getElementById("author");
+  const quoteAuthor = document.getElementById("author");
   const getQuote = document.getElementById("get-quote");
 
   let quotes = [
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
   getQuote.addEventListener("click", async () => {
     const rand = Math.ceil(Math.random() * quotes.length);
     quote.textContent = quotes[rand].quote;
-    author.textContent = quotes[rand].author;
+    quoteAuthor.textContent = quotes[rand].author;
 
     // await displayByAPI();
   });
@@ -112,9 +112,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const displayByAPI = async () => {
     const data = await apiCall();
     const { author, content } = data.data;
-    console.log("hello");
     quote.textContent = content;
-    author.textContent = author;
+    quoteAuthor.textContent = `- ${author}`;
   };
 
   const apiCall = async () => {
